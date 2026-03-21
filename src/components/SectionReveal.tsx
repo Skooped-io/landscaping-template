@@ -9,14 +9,25 @@ interface Props {
   delay?: number;
 }
 
+const animationClasses = {
+  "fade-up": "animate-fade-up",
+  "fade-in": "animate-fade-in",
+  "slide-left": "animate-slide-left",
+  "slide-right": "animate-slide-right",
+  "scale-in": "animate-scale-in",
+};
+
 export default function SectionReveal({ children, className, animation = "fade-up", delay = 0 }: Props) {
-  const { ref, isVisible } = useScrollReveal(0.15);
+  const { ref, isVisible } = useScrollReveal(0.05);
 
   return (
     <div
       ref={ref}
-      className={cn("opacity-0", isVisible && `animate-${animation}`, className)}
-      style={{ animationDelay: isVisible ? `${delay}ms` : undefined }}
+      className={cn(
+        isVisible ? animationClasses[animation] : "opacity-0",
+        className
+      )}
+      style={isVisible && delay > 0 ? { animationDelay: `${delay}ms` } : undefined}
     >
       {children}
     </div>
