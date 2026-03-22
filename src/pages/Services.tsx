@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionReveal from "@/components/SectionReveal";
 import { Scissors, PenTool, HardHat, Droplets, TreePine, Wind } from "lucide-react";
-import { seoConfig } from "@/lib/config";
+import { seoConfig, slugify } from "@/lib/config";
 
 import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
@@ -44,7 +44,9 @@ export default function ServicesPage() {
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                           <Icon className="w-5 h-5 text-primary" />
                         </div>
-                        <h2 className="font-heading text-2xl md:text-3xl font-bold text-secondary">{s.title}</h2>
+                        <Link to={`/services/${slugify(s.title)}`} className="hover:text-primary transition-colors">
+                          <h2 className="font-heading text-2xl md:text-3xl font-bold text-secondary">{s.title}</h2>
+                        </Link>
                       </div>
                       <p className="text-foreground/70 leading-relaxed text-lg">{s.desc}</p>
                       <ul className="mt-6 space-y-2">
@@ -55,9 +57,14 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-                      <Button asChild variant="default" size="lg" className="mt-8">
-                        <Link to="/contact">Request This Service</Link>
-                      </Button>
+                      <div className="flex gap-3 mt-8">
+                        <Button asChild variant="default" size="lg">
+                          <Link to={`/services/${slugify(s.title)}`}>Learn More</Link>
+                        </Button>
+                        <Button asChild variant="outline" size="lg">
+                          <Link to="/contact">Request Quote</Link>
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </SectionReveal>

@@ -23,3 +23,11 @@ export function getImage(dynamicConfig: any, slot: string, fallback: string): st
 export function getPrimaryColor(dynamicConfig: any): string {
   return dynamicConfig?.branding?.primaryColor || staticConfig.branding?.primaryColor || '#2D8B4E';
 }
+
+export function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+export function getServiceBySlug(slug: string) {
+  return staticConfig.services.find((s) => slugify(s.title) === slug) || null;
+}
