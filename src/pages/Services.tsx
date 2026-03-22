@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionReveal from "@/components/SectionReveal";
 import { Scissors, PenTool, HardHat, Droplets, TreePine, Wind } from "lucide-react";
+import { seoConfig } from "@/lib/config";
 
 import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
@@ -10,50 +11,8 @@ import p4 from "@/assets/portfolio-4.jpg";
 import p5 from "@/assets/portfolio-5.jpg";
 import p6 from "@/assets/portfolio-6.jpg";
 
-const services = [
-  {
-    icon: Scissors,
-    title: "Lawn Maintenance",
-    img: p1,
-    desc: "Consistent, expert lawn care that keeps your property looking sharp all year long.",
-    items: ["Weekly mowing & edging", "Fertilization programs", "Weed & pest control", "Aeration & overseeding", "Seasonal cleanups"],
-  },
-  {
-    icon: PenTool,
-    title: "Landscape Design & Installation",
-    img: p4,
-    desc: "Custom landscape plans that bring your vision to life — from concept sketches to the final planting.",
-    items: ["On-site consultation", "3D design renderings", "Plant selection & sourcing", "Full installation", "Ongoing maintenance plans"],
-  },
-  {
-    icon: HardHat,
-    title: "Hardscaping",
-    img: p3,
-    desc: "Patios, retaining walls, walkways, and fire pits built to last — with natural stone and premium materials.",
-    items: ["Paver patios & walkways", "Retaining walls", "Fire pits & outdoor kitchens", "Seat walls & steps", "Drainage solutions"],
-  },
-  {
-    icon: Droplets,
-    title: "Irrigation Systems",
-    img: p2,
-    desc: "Smart watering systems that save water and keep every zone of your landscape perfectly hydrated.",
-    items: ["System design & install", "Smart controller setup", "Drip irrigation", "Seasonal adjustments", "Repairs & maintenance"],
-  },
-  {
-    icon: TreePine,
-    title: "Tree & Shrub Care",
-    img: p5,
-    desc: "Keep your trees and shrubs healthy, shaped, and safe with professional pruning and treatment.",
-    items: ["Structural pruning", "Disease & pest treatment", "Deep root fertilization", "Storm damage cleanup", "Removal when necessary"],
-  },
-  {
-    icon: Wind,
-    title: "Seasonal Cleanup & Mulching",
-    img: p6,
-    desc: "Spring and fall cleanup services that prepare your landscape for the season ahead.",
-    items: ["Leaf removal", "Bed edging & shaping", "Mulch installation", "Debris hauling", "Gutter clearing"],
-  },
-];
+const serviceIcons = [Scissors, PenTool, HardHat, Droplets, TreePine, Wind];
+const serviceImages = [p1, p4, p3, p2, p5, p6];
 
 export default function ServicesPage() {
   return (
@@ -70,37 +29,40 @@ export default function ServicesPage() {
           </SectionReveal>
 
           <div className="space-y-24 mt-20">
-            {services.map((s, i) => (
-              <SectionReveal key={s.title}>
-                <div className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:[direction:rtl]" : ""}`}>
-                  <div className={i % 2 === 1 ? "md:[direction:ltr]" : ""}>
-                    <div className="rounded-lg overflow-hidden shadow-xl">
-                      <img src={s.img} alt={s.title} className="w-full aspect-[4/3] object-cover" loading="lazy" />
-                    </div>
-                  </div>
-                  <div className={i % 2 === 1 ? "md:[direction:ltr]" : ""}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <s.icon className="w-5 h-5 text-primary" />
+            {seoConfig.services.map((s, i) => {
+              const Icon = serviceIcons[i];
+              return (
+                <SectionReveal key={s.title}>
+                  <div className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:[direction:rtl]" : ""}`}>
+                    <div className={i % 2 === 1 ? "md:[direction:ltr]" : ""}>
+                      <div className="rounded-lg overflow-hidden shadow-xl">
+                        <img src={serviceImages[i]} alt={s.title} className="w-full aspect-[4/3] object-cover" loading="lazy" data-image-slot={`service_${i + 1}`} />
                       </div>
-                      <h2 className="font-heading text-2xl md:text-3xl font-bold text-secondary">{s.title}</h2>
                     </div>
-                    <p className="text-foreground/70 leading-relaxed text-lg">{s.desc}</p>
-                    <ul className="mt-6 space-y-2">
-                      {s.items.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-foreground/80">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button asChild variant="default" size="lg" className="mt-8">
-                      <Link to="/contact">Request This Service</Link>
-                    </Button>
+                    <div className={i % 2 === 1 ? "md:[direction:ltr]" : ""}>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <h2 className="font-heading text-2xl md:text-3xl font-bold text-secondary">{s.title}</h2>
+                      </div>
+                      <p className="text-foreground/70 leading-relaxed text-lg">{s.desc}</p>
+                      <ul className="mt-6 space-y-2">
+                        {s.items.map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-foreground/80">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button asChild variant="default" size="lg" className="mt-8">
+                        <Link to="/contact">Request This Service</Link>
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </SectionReveal>
-            ))}
+                </SectionReveal>
+              );
+            })}
           </div>
         </div>
       </section>

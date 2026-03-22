@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Leaf, Phone, Mail, MapPin } from "lucide-react";
+import { seoConfig } from "@/lib/config";
 
 export default function Footer() {
   return (
@@ -9,21 +10,21 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Leaf className="w-6 h-6 text-accent" />
-              <span className="font-heading text-xl font-bold">GreenCraft</span>
+              <span className="font-heading text-xl font-bold">{seoConfig.businessName.split(' ')[0]}</span>
             </div>
             <p className="text-dark-section-foreground/70 text-sm leading-relaxed">
-              Family-owned landscaping company dedicated to creating beautiful, sustainable outdoor spaces since 2008.
+              {seoConfig.about}
             </p>
           </div>
 
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm text-dark-section-foreground/70">
-              <li><Link to="/services" className="hover:text-accent transition-colors">Lawn Maintenance</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">Landscape Design</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">Hardscaping</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">Irrigation Systems</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">Tree & Shrub Care</Link></li>
+              {seoConfig.services.slice(0, 5).map((s) => (
+                <li key={s.title}>
+                  <Link to="/services" className="hover:text-accent transition-colors">{s.title}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -41,22 +42,22 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-dark-section-foreground/70">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-accent shrink-0" />
-                (555) 234-5678
+                {seoConfig.phone}
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
-                hello@greencraft.com
+                {seoConfig.email}
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                Springfield & surrounding areas
+                {seoConfig.serviceArea}
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-dark-section-foreground/10 mt-12 pt-8 text-center text-sm text-dark-section-foreground/50">
-          © {new Date().getFullYear()} GreenCraft Landscaping. All rights reserved.
+          © {new Date().getFullYear()} {seoConfig.businessName}. All rights reserved.
         </div>
       </div>
     </footer>

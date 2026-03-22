@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Leaf } from "lucide-react";
+import { seoConfig } from "@/lib/config";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -21,7 +22,7 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-2 group">
           <Leaf className="w-7 h-7 text-primary transition-transform group-hover:rotate-12" />
           <span className="font-heading text-xl md:text-2xl font-bold text-secondary">
-            GreenCraft
+            {seoConfig.businessName.split(' ')[0]}
           </span>
         </Link>
 

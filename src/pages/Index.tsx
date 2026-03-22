@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionReveal from "@/components/SectionReveal";
 import { Scissors, PenTool, HardHat, Droplets, TreePine, Wind, Quote, ArrowRight, Sprout } from "lucide-react";
+import { seoConfig, getImage } from "@/lib/config";
 
 import heroImg from "@/assets/hero-backyard.jpg";
 import ba1 from "@/assets/before-after-1.jpg";
@@ -10,45 +11,40 @@ import ba3 from "@/assets/before-after-3.jpg";
 import teamImg from "@/assets/team-working.jpg";
 import springImg from "@/assets/spring-garden.jpg";
 
-const services = [
-  { icon: Scissors, label: "Lawn Care" },
-  { icon: PenTool, label: "Landscape Design" },
-  { icon: HardHat, label: "Hardscaping" },
-  { icon: Droplets, label: "Irrigation" },
-  { icon: TreePine, label: "Tree Service" },
-  { icon: Wind, label: "Seasonal Cleanup" },
-];
+const serviceIcons = [Scissors, PenTool, HardHat, Droplets, TreePine, Wind];
 
-const projects = [
-  { img: ba1, title: "Complete Lawn Revival", desc: "Transformed an overgrown yard into a lush, manicured lawn with colorful garden beds." },
-  { img: ba2, title: "Backyard Patio Oasis", desc: "Converted bare soil into a stunning stone patio with fire pit and seating area." },
-  { img: ba3, title: "Garden & Water Feature", desc: "Added a stone pathway, native plantings, and a birdbath fountain to a plain lawn." },
-];
-
-const testimonials = [
-  { name: "Margaret Holloway", project: "Full Landscape Redesign", text: "GreenCraft turned our tired backyard into the most beautiful space on the block. The attention to detail was incredible — every plant placed with purpose." },
-  { name: "David Chen", project: "Patio & Hardscaping", text: "From the first consultation to the final walkthrough, the team was professional and creative. Our new patio has become our favorite spot in the house." },
-  { name: "Sarah Whitfield", project: "Weekly Lawn Care", text: "We've used their maintenance service for two years and our lawn has never looked better. Reliable, friendly, and they genuinely care about every yard." },
-];
+const baImages = [ba1, ba2, ba3];
 
 export default function HomePage() {
+  const services = seoConfig.services.map((s, i) => ({
+    icon: serviceIcons[i],
+    label: s.shortLabel,
+  }));
+
+  const projects = seoConfig.beforeAfter.map((p, i) => ({
+    img: baImages[i],
+    title: p.title,
+    desc: p.desc,
+  }));
+
   return (
     <main>
       {/* Hero */}
       <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
         <img
           src={heroImg}
-          alt="Beautiful landscaped backyard at golden hour"
+          alt={`${seoConfig.businessName} - ${seoConfig.industry}`}
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
+          data-image-slot="hero"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-dark-section/80 via-dark-section/50 to-transparent" />
         <div className="container relative z-10 max-w-2xl">
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-dark-section-foreground leading-[1.1] text-balance animate-fade-up">
-            Beautiful Landscapes, Effortless Maintenance
+            {seoConfig.seo.home.h1}
           </h1>
           <p className="mt-6 text-lg text-dark-section-foreground/85 max-w-lg leading-relaxed animate-fade-up" style={{ animationDelay: "100ms" }}>
-            We transform ordinary outdoor spaces into extraordinary living environments — designed to thrive season after season.
+            {seoConfig.heroSubtitle}
           </p>
           <div className="flex flex-wrap gap-4 mt-8 animate-fade-up" style={{ animationDelay: "200ms" }}>
             <Button asChild variant="hero" size="xl">
@@ -69,7 +65,7 @@ export default function HomePage() {
               What We Do
             </h2>
             <p className="text-muted-foreground text-center mt-3 max-w-md mx-auto">
-              Comprehensive landscaping services for every season
+              Comprehensive {seoConfig.industry.toLowerCase()} services for every season
             </p>
           </SectionReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-12">
@@ -108,6 +104,7 @@ export default function HomePage() {
                       alt={p.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
+                      data-image-slot={`before_after_${i + 1}`}
                     />
                   </div>
                   <div className="p-6">
@@ -134,7 +131,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <SectionReveal animation="slide-right">
               <div className="rounded-lg overflow-hidden shadow-xl">
-                <img src={teamImg} alt="GreenCraft team planting shrubs" className="w-full h-full object-cover" loading="lazy" />
+                <img src={teamImg} alt={`${seoConfig.businessName} team at work`} className="w-full h-full object-cover" loading="lazy" data-image-slot="team" />
               </div>
             </SectionReveal>
             <SectionReveal animation="slide-left">
@@ -143,10 +140,10 @@ export default function HomePage() {
                   <Sprout className="w-4 h-4" /> About Us
                 </span>
                 <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary leading-tight text-balance">
-                  Family-Owned Since 2008
+                  Family-Owned Since {seoConfig.yearEstablished}
                 </h2>
                 <p className="text-foreground/70 mt-4 leading-relaxed text-lg">
-                  We treat your yard like it's our own. What started as a one-truck operation has grown into a full-service landscaping company — but we've never lost the personal touch that got us here.
+                  We treat your yard like it's our own. What started as a one-truck operation has grown into a full-service {seoConfig.industry.toLowerCase()} company — but we've never lost the personal touch that got us here.
                 </p>
                 <Button asChild variant="outline" size="lg" className="mt-6">
                   <Link to="/about">Learn More About Us</Link>
@@ -166,7 +163,7 @@ export default function HomePage() {
             </h2>
           </SectionReveal>
           <div className="grid md:grid-cols-3 gap-8 mt-14">
-            {testimonials.map((t, i) => (
+            {seoConfig.testimonials.map((t, i) => (
               <SectionReveal key={t.name} delay={i * 100}>
                 <div className="bg-card rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
                   <Quote className="w-8 h-8 text-accent mb-4" />
@@ -207,7 +204,7 @@ export default function HomePage() {
             </SectionReveal>
             <SectionReveal animation="slide-left">
               <div className="rounded-lg overflow-hidden shadow-xl">
-                <img src={springImg} alt="Spring tulips in bloom" className="w-full h-full object-cover" loading="lazy" />
+                <img src={springImg} alt="Spring tulips in bloom" className="w-full h-full object-cover" loading="lazy" data-image-slot="seasonal" />
               </div>
             </SectionReveal>
           </div>
@@ -229,10 +226,10 @@ export default function HomePage() {
                 <Link to="/contact">Get a Free Quote</Link>
               </Button>
               <a
-                href="tel:5552345678"
+                href={`tel:${seoConfig.phoneRaw}`}
                 className="inline-flex items-center gap-2 text-dark-section-foreground/80 hover:text-accent transition-colors text-lg font-medium"
               >
-                📞 (555) 234-5678
+                📞 {seoConfig.phone}
               </a>
             </div>
           </SectionReveal>

@@ -6,6 +6,11 @@
 
 @layer base {
   :root {
+    /* Brand colors as CSS custom properties */
+    --color-primary: #2D8B4E;
+    --color-secondary: #5C4033;
+    --color-accent: #F0C75E;
+
     --background: 80 20% 97%;
     --foreground: 0 0% 17%;
 

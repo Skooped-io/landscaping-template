@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import SectionReveal from "@/components/SectionReveal";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+import { seoConfig } from "@/lib/config";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -61,13 +62,9 @@ export default function ContactPage() {
                         <label className="text-sm font-medium text-foreground mb-1.5 block">Service Interest</label>
                         <select className="w-full h-11 rounded-md border border-input bg-background px-4 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                           <option value="">Select a service</option>
-                          <option>Lawn Maintenance</option>
-                          <option>Landscape Design & Installation</option>
-                          <option>Hardscaping</option>
-                          <option>Irrigation Systems</option>
-                          <option>Tree & Shrub Care</option>
-                          <option>Seasonal Cleanup</option>
-                          <option>Not sure yet</option>
+                          {seoConfig.contactFormServices.map((service) => (
+                            <option key={service}>{service}</option>
+                          ))}
                         </select>
                       </div>
                       <div>
@@ -100,7 +97,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-sm text-muted-foreground">Phone</p>
-                          <a href="tel:5552345678" className="font-medium text-foreground hover:text-primary transition-colors">(555) 234-5678</a>
+                          <a href={`tel:${seoConfig.phoneRaw}`} className="font-medium text-foreground hover:text-primary transition-colors">{seoConfig.phone}</a>
                         </div>
                       </li>
                       <li className="flex items-center gap-3">
@@ -109,7 +106,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-sm text-muted-foreground">Email</p>
-                          <a href="mailto:hello@greencraft.com" className="font-medium text-foreground hover:text-primary transition-colors">hello@greencraft.com</a>
+                          <a href={`mailto:${seoConfig.email}`} className="font-medium text-foreground hover:text-primary transition-colors">{seoConfig.email}</a>
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
@@ -118,7 +115,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-sm text-muted-foreground">Service Area</p>
-                          <p className="font-medium text-foreground">Springfield & 25-mile radius</p>
+                          <p className="font-medium text-foreground">{seoConfig.serviceArea}</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
@@ -127,8 +124,8 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-sm text-muted-foreground">Hours</p>
-                          <p className="font-medium text-foreground">Mon–Fri: 7am – 6pm</p>
-                          <p className="font-medium text-foreground">Sat: 8am – 2pm</p>
+                          <p className="font-medium text-foreground">{seoConfig.hours.weekday}</p>
+                          <p className="font-medium text-foreground">{seoConfig.hours.saturday}</p>
                         </div>
                       </li>
                     </ul>
@@ -139,8 +136,8 @@ export default function ContactPage() {
                     <div className="aspect-[4/3] bg-primary/5 flex items-center justify-center">
                       <div className="text-center p-8">
                         <MapPin className="w-10 h-10 text-primary mx-auto mb-3" />
-                        <p className="font-heading font-semibold text-secondary">Springfield, IL</p>
-                        <p className="text-sm text-muted-foreground mt-1">Serving the greater Springfield area</p>
+                        <p className="font-heading font-semibold text-secondary">{seoConfig.address.city}, {seoConfig.address.state}</p>
+                        <p className="text-sm text-muted-foreground mt-1">Serving the greater {seoConfig.address.city} area</p>
                       </div>
                     </div>
                   </div>
