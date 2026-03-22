@@ -44,7 +44,9 @@ export default function ServicesPage() {
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                           <Icon className="w-5 h-5 text-primary" />
                         </div>
-                        <h2 className="font-heading text-2xl md:text-3xl font-bold text-secondary">{s.title}</h2>
+                        <Link to={`/services/${slugify(s.title)}`} className="hover:text-primary transition-colors">
+                          <h2 className="font-heading text-2xl md:text-3xl font-bold text-secondary">{s.title}</h2>
+                        </Link>
                       </div>
                       <p className="text-foreground/70 leading-relaxed text-lg">{s.desc}</p>
                       <ul className="mt-6 space-y-2">
