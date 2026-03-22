@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionReveal from "@/components/SectionReveal";
 import { X } from "lucide-react";
+import { seoConfig } from "@/lib/config";
 
 import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
@@ -13,22 +14,17 @@ import p6 from "@/assets/portfolio-6.jpg";
 import ba1 from "@/assets/before-after-1.jpg";
 import ba2 from "@/assets/before-after-2.jpg";
 
+const portfolioImages = [p1, p2, p3, p4, p5, p6, ba1, ba2];
 const categories = ["All", "Residential", "Commercial", "Hardscaping", "Gardens"] as const;
-
-const projects = [
-  { img: p1, title: "Perennial Garden Pathway", category: "Gardens", desc: "A winding stone path through a vibrant mix of ornamental grasses and flowering perennials." },
-  { img: p2, title: "Corporate Campus Entry", category: "Commercial", desc: "Manicured hedges and ornamental trees framing a modern office entrance." },
-  { img: p3, title: "Evening Fire Pit Patio", category: "Hardscaping", desc: "Custom stone patio with integrated fire pit, seat walls, and landscape lighting." },
-  { img: p4, title: "Cottage Garden Walk", category: "Gardens", desc: "Classic cottage-style garden with roses, lavender, and natural stone stepping stones." },
-  { img: p5, title: "Terraced Retaining Wall", category: "Hardscaping", desc: "Multi-level natural stone retaining wall with built-in planting pockets." },
-  { img: p6, title: "Outdoor Kitchen & Pergola", category: "Residential", desc: "Complete outdoor living space with pergola, built-in grill, and stone countertops." },
-  { img: ba1, title: "Full Lawn Restoration", category: "Residential", desc: "From neglected and patchy to thick, healthy turf with professional care." },
-  { img: ba2, title: "Backyard Entertainment Area", category: "Hardscaping", desc: "Bare yard transformed into a stunning patio with dining and lounge areas." },
-];
 
 export default function PortfolioPage() {
   const [filter, setFilter] = useState<string>("All");
   const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const projects = seoConfig.portfolio.map((p, i) => ({
+    ...p,
+    img: portfolioImages[i],
+  }));
 
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
@@ -41,7 +37,7 @@ export default function PortfolioPage() {
               Our Work
             </h1>
             <p className="text-muted-foreground text-center mt-4 max-w-xl mx-auto text-lg">
-              Browse our recent projects and see the GreenCraft difference.
+              Browse our recent projects and see the {seoConfig.businessName.split(' ')[0]} difference.
             </p>
           </SectionReveal>
 
@@ -76,6 +72,7 @@ export default function PortfolioPage() {
                       alt={p.title}
                       className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
+                      data-image-slot={`gallery_${i + 1}`}
                     />
                   </div>
                   <div className="p-5">

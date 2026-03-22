@@ -1,22 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionReveal from "@/components/SectionReveal";
-import { Award, Heart, Leaf, Users } from "lucide-react";
+import { Award, Heart, Users, Leaf } from "lucide-react";
+import { seoConfig } from "@/lib/config";
 import ownerImg from "@/assets/owner-portrait.jpg";
 import teamImg from "@/assets/team-working.jpg";
 
-const values = [
-  { icon: Heart, title: "Quality First", desc: "We never cut corners. Every project gets the same care and craftsmanship, whether it's a small garden bed or a full property transformation." },
-  { icon: Users, title: "Clear Communication", desc: "You'll always know what's happening, when it's happening, and what it costs. No surprises, no hidden fees." },
-  { icon: Leaf, title: "Sustainable Practices", desc: "Native plantings, water-smart irrigation, organic treatments — we design landscapes that work with nature, not against it." },
-];
-
-const team = [
-  { name: "Tom Callahan", role: "Founder & Lead Designer", initials: "TC" },
-  { name: "Maria Santos", role: "Operations Manager", initials: "MS" },
-  { name: "Jake Brennan", role: "Hardscape Specialist", initials: "JB" },
-  { name: "Lily Nguyen", role: "Horticulturist", initials: "LN" },
-];
+const valueIcons = [Heart, Users, Leaf];
 
 export default function AboutPage() {
   return (
@@ -27,7 +17,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <SectionReveal animation="slide-right">
               <div className="rounded-lg overflow-hidden shadow-xl max-w-md">
-                <img src={ownerImg} alt="Tom Callahan, founder of GreenCraft" className="w-full object-cover" loading="eager" />
+                <img src={ownerImg} alt={`${seoConfig.ownerName}, founder of ${seoConfig.businessName}`} className="w-full object-cover" loading="eager" data-image-slot="about" />
               </div>
             </SectionReveal>
             <SectionReveal animation="slide-left">
@@ -36,10 +26,10 @@ export default function AboutPage() {
                 Rooted in Hard Work & Love for the Land
               </h1>
               <p className="text-foreground/70 mt-6 leading-relaxed text-lg">
-                In 2008, Tom Callahan started GreenCraft with a pickup truck, a mower, and a belief that every family deserves a yard they're proud of. What began as weekend lawn jobs quickly grew as neighbors saw the difference — and word spread.
+                In {seoConfig.yearEstablished}, {seoConfig.ownerName} started {seoConfig.businessName} with a pickup truck, a mower, and a belief that every family deserves a yard they're proud of. What began as weekend lawn jobs quickly grew as neighbors saw the difference — and word spread.
               </p>
               <p className="text-foreground/70 mt-4 leading-relaxed">
-                Today, our team of 12 serves the greater Springfield area with full-service landscaping, from weekly maintenance to complete property makeovers. But the mission hasn't changed: treat every yard like it's our own.
+                Today, our team of {seoConfig.teamSize} serves the greater {seoConfig.address.city} area with full-service {seoConfig.industry.toLowerCase()}, from weekly maintenance to complete property makeovers. But the mission hasn't changed: treat every yard like it's our own.
               </p>
             </SectionReveal>
           </div>
@@ -53,17 +43,20 @@ export default function AboutPage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary text-center text-balance">Our Approach</h2>
           </SectionReveal>
           <div className="grid md:grid-cols-3 gap-8 mt-14">
-            {values.map((v, i) => (
-              <SectionReveal key={v.title} delay={i * 100}>
-                <div className="p-8 rounded-lg bg-background shadow-md hover:shadow-lg transition-shadow h-full">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-5">
-                    <v.icon className="w-6 h-6 text-primary" />
+            {seoConfig.values.map((v, i) => {
+              const Icon = valueIcons[i];
+              return (
+                <SectionReveal key={v.title} delay={i * 100}>
+                  <div className="p-8 rounded-lg bg-background shadow-md hover:shadow-lg transition-shadow h-full">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading text-xl font-semibold text-secondary">{v.title}</h3>
+                    <p className="text-foreground/70 mt-3 leading-relaxed">{v.desc}</p>
                   </div>
-                  <h3 className="font-heading text-xl font-semibold text-secondary">{v.title}</h3>
-                  <p className="text-foreground/70 mt-3 leading-relaxed">{v.desc}</p>
-                </div>
-              </SectionReveal>
-            ))}
+                </SectionReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -75,7 +68,7 @@ export default function AboutPage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary text-center text-balance">Meet the Crew</h2>
           </SectionReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-14">
-            {team.map((t, i) => (
+            {seoConfig.team.map((t, i) => (
               <SectionReveal key={t.name} delay={i * 80}>
                 <div className="text-center">
                   <div className="w-24 h-24 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
@@ -95,7 +88,7 @@ export default function AboutPage() {
         <div className="container text-center">
           <SectionReveal>
             <div className="flex flex-wrap justify-center gap-8">
-              {["Licensed & Insured", "EPA Certified", "NALP Member", "5-Star Rated"].map((cert) => (
+              {seoConfig.certifications.map((cert) => (
                 <div key={cert} className="flex items-center gap-2 text-secondary font-medium">
                   <Award className="w-5 h-5 text-accent" />
                   {cert}
