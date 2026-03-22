@@ -57,9 +57,14 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-                      <Button asChild variant="default" size="lg" className="mt-8">
-                        <Link to="/contact">Request This Service</Link>
-                      </Button>
+                      <div className="flex gap-3 mt-8">
+                        <Button asChild variant="default" size="lg">
+                          <Link to={`/services/${slugify(s.title)}`}>Learn More</Link>
+                        </Button>
+                        <Button asChild variant="outline" size="lg">
+                          <Link to="/contact">Request Quote</Link>
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </SectionReveal>
