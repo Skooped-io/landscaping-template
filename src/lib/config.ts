@@ -31,4 +31,3 @@ export function slugify(text: string): string {
 export function getServiceBySlug(slug: string) {
   return staticConfig.services.find((s) => slugify(s.title) === slug) || null;
 }
-}
