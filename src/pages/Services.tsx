@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionReveal from "@/components/SectionReveal";
 import { Scissors, PenTool, HardHat, Droplets, TreePine, Wind } from "lucide-react";
-import { seoConfig } from "@/lib/config";
+import { seoConfig, slugify } from "@/lib/config";
 
 import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
