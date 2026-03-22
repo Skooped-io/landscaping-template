@@ -1,0 +1,137 @@
+{
+  "businessName": "GreenCraft Landscaping",
+  "phone": "(555) 234-5678",
+  "phoneRaw": "5552345678",
+  "email": "hello@greencraft.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "Springfield",
+    "state": "IL",
+    "zip": "62701",
+    "full": "123 Main St, Springfield, IL 62701"
+  },
+  "serviceArea": "Springfield & 25-mile radius",
+  "industry": "Landscaping",
+  "yearEstablished": "2008",
+  "licenseNumber": "LIC-2024-001",
+  "about": "Family-owned landscaping company dedicated to creating beautiful, sustainable outdoor spaces since 2008.",
+  "ownerName": "Tom Callahan",
+  "teamSize": "12",
+  "tagline": "Beautiful Landscapes, Effortless Maintenance",
+  "heroSubtitle": "We transform ordinary outdoor spaces into extraordinary living environments — designed to thrive season after season.",
+  "hours": {
+    "weekday": "Mon–Fri: 7am – 6pm",
+    "saturday": "Sat: 8am – 2pm"
+  },
+  "services": [
+    {
+      "title": "Lawn Maintenance",
+      "shortLabel": "Lawn Care",
+      "desc": "Consistent, expert lawn care that keeps your property looking sharp all year long.",
+      "items": ["Weekly mowing & edging", "Fertilization programs", "Weed & pest control", "Aeration & overseeding", "Seasonal cleanups"]
+    },
+    {
+      "title": "Landscape Design & Installation",
+      "shortLabel": "Landscape Design",
+      "desc": "Custom landscape plans that bring your vision to life — from concept sketches to the final planting.",
+      "items": ["On-site consultation", "3D design renderings", "Plant selection & sourcing", "Full installation", "Ongoing maintenance plans"]
+    },
+    {
+      "title": "Hardscaping",
+      "shortLabel": "Hardscaping",
+      "desc": "Patios, retaining walls, walkways, and fire pits built to last — with natural stone and premium materials.",
+      "items": ["Paver patios & walkways", "Retaining walls", "Fire pits & outdoor kitchens", "Seat walls & steps", "Drainage solutions"]
+    },
+    {
+      "title": "Irrigation Systems",
+      "shortLabel": "Irrigation",
+      "desc": "Smart watering systems that save water and keep every zone of your landscape perfectly hydrated.",
+      "items": ["System design & install", "Smart controller setup", "Drip irrigation", "Seasonal adjustments", "Repairs & maintenance"]
+    },
+    {
+      "title": "Tree & Shrub Care",
+      "shortLabel": "Tree Service",
+      "desc": "Keep your trees and shrubs healthy, shaped, and safe with professional pruning and treatment.",
+      "items": ["Structural pruning", "Disease & pest treatment", "Deep root fertilization", "Storm damage cleanup", "Removal when necessary"]
+    },
+    {
+      "title": "Seasonal Cleanup & Mulching",
+      "shortLabel": "Seasonal Cleanup",
+      "desc": "Spring and fall cleanup services that prepare your landscape for the season ahead.",
+      "items": ["Leaf removal", "Bed edging & shaping", "Mulch installation", "Debris hauling", "Gutter clearing"]
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Margaret Holloway",
+      "project": "Full Landscape Redesign",
+      "text": "GreenCraft turned our tired backyard into the most beautiful space on the block. The attention to detail was incredible — every plant placed with purpose."
+    },
+    {
+      "name": "David Chen",
+      "project": "Patio & Hardscaping",
+      "text": "From the first consultation to the final walkthrough, the team was professional and creative. Our new patio has become our favorite spot in the house."
+    },
+    {
+      "name": "Sarah Whitfield",
+      "project": "Weekly Lawn Care",
+      "text": "We've used their maintenance service for two years and our lawn has never looked better. Reliable, friendly, and they genuinely care about every yard."
+    }
+  ],
+  "portfolio": [
+    { "title": "Perennial Garden Pathway", "category": "Gardens", "desc": "A winding stone path through a vibrant mix of ornamental grasses and flowering perennials." },
+    { "title": "Corporate Campus Entry", "category": "Commercial", "desc": "Manicured hedges and ornamental trees framing a modern office entrance." },
+    { "title": "Evening Fire Pit Patio", "category": "Hardscaping", "desc": "Custom stone patio with integrated fire pit, seat walls, and landscape lighting." },
+    { "title": "Cottage Garden Walk", "category": "Gardens", "desc": "Classic cottage-style garden with roses, lavender, and natural stone stepping stones." },
+    { "title": "Terraced Retaining Wall", "category": "Hardscaping", "desc": "Multi-level natural stone retaining wall with built-in planting pockets." },
+    { "title": "Outdoor Kitchen & Pergola", "category": "Residential", "desc": "Complete outdoor living space with pergola, built-in grill, and stone countertops." },
+    { "title": "Full Lawn Restoration", "category": "Residential", "desc": "From neglected and patchy to thick, healthy turf with professional care." },
+    { "title": "Backyard Entertainment Area", "category": "Hardscaping", "desc": "Bare yard transformed into a stunning patio with dining and lounge areas." }
+  ],
+  "beforeAfter": [
+    { "title": "Complete Lawn Revival", "desc": "Transformed an overgrown yard into a lush, manicured lawn with colorful garden beds." },
+    { "title": "Backyard Patio Oasis", "desc": "Converted bare soil into a stunning stone patio with fire pit and seating area." },
+    { "title": "Garden & Water Feature", "desc": "Added a stone pathway, native plantings, and a birdbath fountain to a plain lawn." }
+  ],
+  "team": [
+    { "name": "Tom Callahan", "role": "Founder & Lead Designer", "initials": "TC" },
+    { "name": "Maria Santos", "role": "Operations Manager", "initials": "MS" },
+    { "name": "Jake Brennan", "role": "Hardscape Specialist", "initials": "JB" },
+    { "name": "Lily Nguyen", "role": "Horticulturist", "initials": "LN" }
+  ],
+  "values": [
+    { "title": "Quality First", "desc": "We never cut corners. Every project gets the same care and craftsmanship, whether it's a small garden bed or a full property transformation." },
+    { "title": "Clear Communication", "desc": "You'll always know what's happening, when it's happening, and what it costs. No surprises, no hidden fees." },
+    { "title": "Sustainable Practices", "desc": "Native plantings, water-smart irrigation, organic treatments — we design landscapes that work with nature, not against it." }
+  ],
+  "certifications": ["Licensed & Insured", "EPA Certified", "NALP Member", "5-Star Rated"],
+  "contactFormServices": ["Lawn Maintenance", "Landscape Design & Installation", "Hardscaping", "Irrigation Systems", "Tree & Shrub Care", "Seasonal Cleanup", "Not sure yet"],
+  "seo": {
+    "home": {
+      "title": "GreenCraft Landscaping | Landscaping in Springfield, IL",
+      "description": "GreenCraft Landscaping provides expert lawn care, landscape design, hardscaping, and irrigation services in Springfield, IL. Get a free quote today.",
+      "h1": "Beautiful Landscapes, Effortless Maintenance"
+    },
+    "about": {
+      "title": "About GreenCraft Landscaping | Springfield, IL",
+      "description": "Learn about GreenCraft Landscaping — a family-owned landscaping company serving Springfield, IL since 2008. Meet our team and discover our approach."
+    },
+    "services": {
+      "title": "Landscaping Services | GreenCraft Landscaping",
+      "description": "Explore our full range of landscaping services including lawn care, landscape design, hardscaping, irrigation, tree care, and seasonal cleanup in Springfield, IL."
+    },
+    "portfolio": {
+      "title": "Our Work | GreenCraft Landscaping Portfolio",
+      "description": "Browse our portfolio of landscaping projects in Springfield, IL. See residential, commercial, hardscaping, and garden transformations by GreenCraft."
+    },
+    "contact": {
+      "title": "Contact GreenCraft Landscaping | Springfield, IL",
+      "description": "Get a free landscaping consultation from GreenCraft Landscaping in Springfield, IL. Call (555) 234-5678 or fill out our contact form."
+    }
+  },
+  "branding": {
+    "primaryColor": "#2D8B4E",
+    "secondaryColor": "#5C4033",
+    "accentColor": "#F0C75E"
+  }
+}
